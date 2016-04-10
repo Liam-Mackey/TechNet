@@ -1,0 +1,8 @@
+@Item = React.createClass
+  render: ->
+    React.DOM.tr null,
+      React.DOM.td null, @props.item.title
+      React.DOM.td null, @props.item.description
+      React.DOM.td null, amountFormat(@props.item.price)
+      React.DOM.img
+        src: @props.item.photo_url
