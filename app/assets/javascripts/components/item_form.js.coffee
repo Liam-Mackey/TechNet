@@ -15,7 +15,7 @@
       @setState @getInitialState()
     , 'JSON'
   valid: ->
-    @state.title && @state.description && @state.price && @state.photo_url
+    @state.title && @state.description && @state.price
   render: ->
     React.DOM.form
       className: 'form-inline'
