@@ -17,12 +17,30 @@ class ItemsController < ApplicationController
 		end
 	end
 
+	def show
+		@item = Item.find(params[:id])
+	end
+
+	def update
+		@item = Item.find(params[:id])
+		if logged_in?
+			if current_user.id == @item.seller_id
+				@item.update(item_params)
+				redirect_to root_path
+			else
+				redirect_to login_path
+			end
+		else
+			redirect_to login_path
+		end
+	end
+
 	def destroy
 		if logged_in?
 			@item = Item.find(params[:id])
 			if current_user.id == @item.seller_id
 				@item.destroy
-				head :no_content
+				redirect_to root_path
 			end
 		else
 			redirect_to login_path

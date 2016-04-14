@@ -17,5 +17,5 @@
       React.DOM.td null,
         React.DOM.a
           className: 'btn btn-danger'
-          onClick: @handleDelete
-          'Delete'
+          href: "/items/" + @props.item.id 
+          "Show"
