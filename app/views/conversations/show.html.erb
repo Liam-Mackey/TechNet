@@ -1,0 +1,19 @@
+<h1>Conversation Between <%= @conversation.seller.username %> and <%= @conversation.buyer.username%></h1>
+
+<% if logged_in? %>
+	<div class="chat-container">
+		<%= form_for Message.new, remote: true do |f| %>
+		<%= f.text_area :body%>
+		<%=f.hidden_field :user_id, :value => current_user.id %>
+		<%= f.hidden_field :conversation_id, :value => @conversation.id %>
+		<%= f.submit "Send Message", :class => "btn" %>
+		<%end%>
+		<div id="chat">
+			<%if @conversation.messages.any?%>
+				<% @conversation.messages.order(created_at: :desc).limit(10).each do |message|%>
+					<p><%= message.user.username %>: <%= message.body%></p>
+				<%end%>
+			<%end%>
+		</div>
+	</div>
+<%end%>

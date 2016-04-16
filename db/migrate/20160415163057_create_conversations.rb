@@ -4,6 +4,8 @@ class CreateConversations < ActiveRecord::Migration
     	t.integer :buyer_id, null: false
     	t.integer :seller_id, null: false
     	t.integer :item_id, null: false
+
+    	t.timestamps null: false
     end
   end
 end

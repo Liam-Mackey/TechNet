@@ -4,6 +4,8 @@ class CreateMessages < ActiveRecord::Migration
     	t.string :body, null: false
     	t.integer :conversation_id
     	t.integer :user_id
+
+    	t.timestamps null: false
     end
   end
 end

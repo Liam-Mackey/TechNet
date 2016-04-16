@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   root 'items#index'
   resources :users, only: [:new, :create]
   resources :items
+  resources :conversations, only: [:create, :show]
+  resource :messages, only: [:create]
 
   get 'login' => "sessions#new"
   post 'login' => "sessions#create"

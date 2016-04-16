@@ -17,23 +17,29 @@ ActiveRecord::Schema.define(version: 20160415163347) do
   enable_extension "plpgsql"
 
   create_table "conversations", force: :cascade do |t|
-    t.integer "buyer_id",  null: false
-    t.integer "seller_id", null: false
-    t.integer "item_id",   null: false
+    t.integer  "buyer_id",   null: false
+    t.integer  "seller_id",  null: false
+    t.integer  "item_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "items", force: :cascade do |t|
-    t.string  "title",       null: false
-    t.string  "description", null: false
-    t.string  "photo_url"
-    t.integer "price",       null: false
-    t.integer "seller_id",   null: false
+    t.string   "title",       null: false
+    t.string   "description", null: false
+    t.string   "photo_url"
+    t.integer  "price",       null: false
+    t.integer  "seller_id",   null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "messages", force: :cascade do |t|
-    t.string  "body",            null: false
-    t.integer "conversation_id"
-    t.integer "user_id"
+    t.string   "body",            null: false
+    t.integer  "conversation_id"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "users", force: :cascade do |t|
