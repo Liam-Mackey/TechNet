@@ -1,4 +1,4 @@
-<h1>Conversation Between <%= @conversation.seller.username %> and <%= @conversation.buyer.username%></h1>
+<h1>Conversation Between <%= @conversation.seller.first_name %> <%= @conversation.seller.last_name%> and <%= @conversation.buyer.first_name%> <%= @conversation.buyer.last_name%></h1>
 
 <% if logged_in? %>
 	<div class="chat-container">
@@ -11,7 +11,7 @@
 		<div id="chat">
 			<%if @conversation.messages.any?%>
 				<% @conversation.messages.order(created_at: :desc).limit(10).each do |message|%>
-					<p><%= message.user.username %>: <%= message.body%></p>
+					<p><%= message.user.first_name %>: <%= message.body%></p>
 				<%end%>
 			<%end%>
 		</div>

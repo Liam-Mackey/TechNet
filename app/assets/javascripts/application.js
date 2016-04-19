@@ -17,4 +17,5 @@
 //= require react
 //= require react_ujs
 //= require components
+//= require private_pub
 //= require_tree .

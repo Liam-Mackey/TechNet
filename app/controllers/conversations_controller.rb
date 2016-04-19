@@ -1,11 +1,7 @@
 class ConversationsController < ApplicationController
 	def create
-		@conversation = Conversation.new(conversation_params)
-		if @conversation.save
-			redirect_to conversation_path(@conversation)
-		else
-			redirect_to root_path
-		end
+		@conversation = Conversation.create_with(conversation_params).find_or_create_by(seller_id: params[:conversation][:seller_id], buyer_id: params[:conversation][:buyer_id])
+		redirect_to conversation_path(@conversation)
 	end
 
 	def show
