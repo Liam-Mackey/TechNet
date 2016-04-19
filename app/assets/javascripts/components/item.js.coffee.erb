@@ -1,0 +1,21 @@
+@Item = React.createClass
+  handleDelete: (e) ->
+    e.preventDefault()
+    $.ajax
+      method: 'DELETE'
+      url: "/items/#{ @props.item.id }"
+      dataType: 'JSON'
+      success: () =>
+        @props.handleDeleteItem @props.item
+      error: () =>
+        $(".errors").html("You need to be the signed in seller to delete this file")
+  render: ->
+    React.DOM.tr null,
+      React.DOM.td null, @props.item.title
+      React.DOM.td null, @props.item.description
+      React.DOM.td null, amountFormat(@props.item.price)
+      React.DOM.td null,
+        React.DOM.a
+          className: 'btn btn-danger'
+          href: "/items/" + @props.item.id 
+          "Show"
