@@ -1,6 +1,6 @@
 <h1><%= @item.title %></h1>
 
-<img src="<%= @item.photo_url %>">
+<img src="<%= @item.photo_url %>" class="img-polaroid" >
 
 <p>$<%= @item.price %></p>
 <p><%= @item.description %></p>
@@ -28,5 +28,5 @@
 </div>
 <%end%>
 <%end%>
-<%= link_to 'Back', :back %>
+<%= link_to 'Back', :back , :class => "btn btn-success"%>
 
