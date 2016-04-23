@@ -10,10 +10,16 @@
     @setState "#{ name }": e.target.value
   handleSubmit: (e) ->
     e.preventDefault()
-    $.post '/items', { item: @state }, (data) =>
-      @props.handleNewItem data
-      @setState @getInitialState()
-    , 'JSON'
+    $.ajax
+      method: 'POST'
+      url: "/items"
+      data: { item: @state }
+      dataType: 'JSON'
+      success: (data) =>
+        @props.handleNewItem data
+        @setState @getInitialState()
+      error: () =>
+        $(".errors").html("You need to login to create an item")
   valid: ->
     @state.title && @state.description && @state.price
   render: ->

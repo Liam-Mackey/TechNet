@@ -1,23 +1,29 @@
-<h1>Welcome <% @user.first_name %></h1>
+<h1>Welcome <%= @user.first_name %>!</h1>
 
 <h2>Sales</h2>
 <% if @user.sales.any? %>
-  <% @user.sales.each do |item|%>
-    <%= link_to item.title, item_path(item)%>
-  <%end%>
+  <ul>
+	<% @user.sales.each do |item|%>
+	  <li><%= link_to item.title, item_path(item)%></li>
+	<%end%>
+  </ul>
 <%end%>
 
 
-<h2>Conversations Between you and the Seller</h2>
 <% if @user.written_messages.any? %>
-  <% @user.written_messages.each do |conversation| %>
-  	<%= link_to conversation.seller.first_name, conversation_path(conversation)%>
-  <%end%>
+  <h2>Conversations Between you and the Seller</h2>
+  <ul>
+    <% @user.written_messages.each do |conversation| %>
+  	  <li><%= link_to conversation.seller.first_name, conversation_path(conversation)%></li>
+    <%end%>
+  </ul>
 <%end%>
 
-<h2>Conversations Between you and the Buyer</h2>
 <% if @user.recieved_messages.any? %>
-  <% @user.recieved_messages.each do |conversation| %>
-  	<%= link_to conversation.buyer.first_name, conversation_path(conversation)%>
-  <%end%>
+  <h2>Conversations Between you and the Buyer</h2>
+  <ul>
+    <% @user.recieved_messages.each do |conversation| %>
+  	  <li><%= link_to conversation.buyer.first_name, conversation_path(conversation)%></li>
+    <%end%>
+  </ul>
 <%end%>

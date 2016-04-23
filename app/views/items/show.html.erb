@@ -7,11 +7,13 @@
 
 
 <% if logged_in? %>
-<%= form_for Conversation.new do |f|%>
-<%= f.hidden_field :item_id, :value => @item.id %>
-<%= f.hidden_field :seller_id, :value => @item.seller_id %>
-<%= f.hidden_field :buyer_id, :value => current_user.id %>
-<%= f.submit "Stat Conversation", :class => "btn" %>
+<% unless @item.users_own_item?(current_user.id) %>
+	<%= form_for Conversation.new do |f|%>
+	<%= f.hidden_field :item_id, :value => @item.id %>
+	<%= f.hidden_field :seller_id, :value => @item.seller_id %>
+	<%= f.hidden_field :buyer_id, :value => current_user.id %>
+	<%= f.submit "Stat Conversation", :class => "btn" %>
+	<%end%>
 <%end%>
 <% if authorized_user(@item) %>
 	<%= link_to "Delete", item_path(@item), :method => "DELETE", :class => "btn btn-danger"%>

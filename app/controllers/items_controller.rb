@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
 			  render json: @item.errors, status: :unprocessable_entity
 			end
 		else
-			redirect_to login_path
+			render json: "You need to login to create Items", status: :unprocessable_entity
 		end
 	end
 
