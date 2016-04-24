@@ -6,4 +6,8 @@ class Item < ActiveRecord::Base
 	def users_own_item?(id)
 		self.seller_id == id
 	end
+
+	def self.search(search)
+		where("title LIKE ?", "%#{search}%") 
+	end
 end
