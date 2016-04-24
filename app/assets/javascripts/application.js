@@ -12,10 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery
-//= require bootstrap-sprockets
 //= require react
 //= require react_ujs
 //= require components
 //= require private_pub
+//= require bootstrap-sprockets
 //= require_tree .

@@ -1,6 +1,9 @@
 class ItemsController < ApplicationController
 	def index
-		@items = Item.includes(:seller).all
+		@items = Item.includes(:seller).all.order(created_at: :desc).limit(10)
+		if params[:search]
+		  @items = Item.search(params[:search]).order("created_at DESC").limit(10)
+		end
 	end
 
 	def create 
@@ -13,7 +16,7 @@ class ItemsController < ApplicationController
 			  render json: @item.errors, status: :unprocessable_entity
 			end
 		else
-			redirect_to login_path
+			render json: "You need to login to create Items", status: :unprocessable_entity
 		end
 	end
 
